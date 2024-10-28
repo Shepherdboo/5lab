@@ -35,26 +35,45 @@ public:
 private slots:
       void saveAsFile();
 
+      void performFindReplace(const QString &findText, const QString &replaceText);
+
+      void on_clearButton_clicked();
+
       void on_newFile_clicked();
 
       void on_openFile_clicked();
 
       void on_saveFile_clicked();
 
+      void on_undo_clicked();
+
+      void on_copy_clicked();
+
+      void on_pasteText_clicked();
+
+      void on_search_clicked();
+
       void on_sizeChange_currentIndexChanged(const QString& size);
 
       void on_colorChange_currentIndexChanged(const QString& color);
+
+      void on_insertTable_clicked();
 
 private:
     Ui::MainWindow *ui;
     QTextEdit *textEdit;
     QString currentFile;
+    QString tempFile;
     QComboBox *sizeChange;
     QComboBox *colorChange;
     void saveSettings();
     void loadSettings();
+    QString tempFilePath;
     void closeEvent(QCloseEvent *event);
     bool isTextChanged;
+    void saveTableCount();
+    void insertTable(int rows, int columns);
+    void loadTableCount();
     };
 
 
